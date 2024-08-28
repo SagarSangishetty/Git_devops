@@ -3,9 +3,9 @@
 #Varilables
 fixed_part="rlv_"
 CMIMPREL="/perf/echanges/IN/MICROREL/FLX-REL-CRREL/archive/"
-#CMRENALF=/prod/echanges/ccnb/REN/CMRENALF/archive
-#CMCONSEN="/prod/echanges/IN/TPMS/archive"
-#CMCTTRA="/prod/echanges/ccnb/FAC/CMCTTRA/archive"
+#CMRENALF=/perf/echanges/ccnb/REN/CMRENALF/archive
+#CMCONSEN="/perf/echanges/IN/TPMS/archive"
+#CMCTTRA="/perf/echanges/ccnb/FAC/CMCTTRA/archive"
 time_threshold="1930"
 
 read -p "Enter the bizdate (YYYYMMDD): " bizdate
@@ -16,22 +16,38 @@ if [[ ! "$bizdate" =~ ^[0-9]{8}$ ]]; then
   exit 1
 fi
 
-# Find and print files matching the specific date and time criteria
-for file in "$CMIMPREL"/*; do
-  # Extract the filename from the full path
-  filename=$(basename "$file")
+# Directories to search and their corresponding fixed parts
+declare -A directories
+directories=(
+  ["/perf/echanges/IN/MICROREL/FLX-REL-CRREL/archive/"]="rlv_"
+  ["/perf/echanges/IN/TPMS/archive"]="xml_"
+  ["/perf/echanges/ccnb/FAC/CMCTTRA/archive"]="dat_"
+)
 
-  # Check if the filename contains the fixed part and the specific date
-  if [[ "$filename" == *"$fixed_part$bizdate"* ]]; then
-    # Extract the timestamp portion after the specific date
-    timestamp="${filename#*$fixed_part$specific_date}"
-    timestamp="${timestamp:0:4}"  # Get HHMM part from the string
+# Time threshold in HHMM format
+time_threshold="1930"
 
-    # Check if timestamp is in HHMM format and compare with threshold
-    if [[ $timestamp =~ ^[0-9]{4}$ ]]; then
-      if [[ $timestamp -ge $time_threshold ]]; then
-        echo "$file"
+# Loop through each directory and search for files
+for directory in "${!directories[@]}"; do
+  fixed_part="${directories[$directory]}"
+  echo "Searching in directory: $directory with fixed part: $fixed_part"
+
+  for file in "$directory"/*; do
+    # Extract the filename from the full path
+    filename=$(basename "$file")
+
+    # Check if the filename contains the fixed part and the specific date
+    if [[ "$filename" == *"$fixed_part$bizdate"* ]]; then
+      # Extract the timestamp portion after the specific date
+      timestamp="${filename#*$fixed_part$bizdate}"
+      timestamp="${timestamp:0:4}"  # Get HHMM part from the string
+
+      # Check if timestamp is in HHMM format and compare with threshold
+      if [[ $timestamp =~ ^[0-9]{4}$ ]]; then
+        if [[ $timestamp -ge $time_threshold ]]; then
+          echo "$file"
+        fi
       fi
     fi
-  fi
+  done
 done
