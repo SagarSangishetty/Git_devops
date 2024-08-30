@@ -2,10 +2,6 @@
 
 #Varilables
 fixed_part="rlv_"
-CMIMPREL="/perf/echanges/IN/MICROREL/FLX-REL-CRREL/archive/"
-#CMRENALF=/perf/echanges/ccnb/REN/CMRENALF/archive
-#CMCONSEN="/perf/echanges/IN/TPMS/archive"
-#CMCTTRA="/perf/echanges/ccnb/FAC/CMCTTRA/archive"
 time_threshold="1930"
 
 read -p "Enter the bizdate (YYYYMMDD): " bizdate
