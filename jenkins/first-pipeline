@@ -1,0 +1,19 @@
+ipipeline {
+    agent any
+    stages {
+        stage('Build and run java program') {
+            steps {
+                
+                sh 'cd /home/ubuntu/git/Git_devops/'
+                sh 'pwd'
+                
+                // Build the Docker image
+                sh 'docker build -t java-first-app-latest-20240831 -f /home/ubuntu/git/Git_devops/docker_run_java_app /home/ubuntu/git/Git_devops/'
+            
+                // Run the Docker container
+                sh 'docker run --rm java-first-app-latest-20240831'
+            }
+        }
+    }
+}
+
