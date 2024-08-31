@@ -1,5 +1,5 @@
 # Dockerfile
-FROM openjdk:17-jdk
+FROM openjdk:21-jdk
 COPY HelloWorld.class /app/HelloWorld.class
 WORKDIR /app
 CMD ["java", "HelloWorld"]
