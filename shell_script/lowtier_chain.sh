@@ -1,9 +1,5 @@
 #!/usr/bin/bash
 
-#Varilables
-fixed_part="rlv_"
-time_threshold="1930"
-
 read -p "Enter the bizdate (YYYYMMDD): " bizdate
 
 # Check if the user entered the date and if it's in the correct format
@@ -47,3 +43,9 @@ for directory in "${!directories[@]}"; do
     fi
   done
 done
+
+#Copying Files to PERF Server
+
+swapn scp *rlv_* cissys@10.15.4.10:/perf/echanges/IN/MICROREL/FLX-REL-CRREL/archive/
+
+expect
