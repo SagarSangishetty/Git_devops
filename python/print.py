@@ -1,4 +1,5 @@
 print("Hello Python")
+print("Hello\nPython")
 #passing multiple argument to a python
 print("Hello" , "Python" , "!" )
 # end is use to add anything at the end of the the argument and sep is use to seprate the argumrnts with anything 
