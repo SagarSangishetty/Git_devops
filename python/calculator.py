@@ -1,15 +1,15 @@
-import sys 
 #To list the calculator operation to perform
 functionality=["Addition","Substraction","Division","Multiplication"]
 print("Calculator will perform below action only")
 for i in functionality:
     print(i)
-operation_to_perform=input("Enter any one from above list\n")
-if  operation_to_perform not in functionality:
-    print ("Enter correct operation from the below list\n",functionality)
-    sys.exit()
-else: 
-    print (f"{operation_to_perform} operation is performed")
+while True:
+    operation_to_perform=input("Enter any one from above list\n")
+    if  operation_to_perform in functionality:
+        print (f"Performing action {operation_to_perform}")
+        break
+else:      
+    print (f"{operation_to_perform} operation is invalid, Please try again")
 
 print("Enter two numbers to perform",f"{operation_to_perform}")
 
