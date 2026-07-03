@@ -1,7 +1,7 @@
 name: Test Cron GitHub Action
 on :
   schedule:
-    - cron: '35 21 * 7 5'
+    - cron: '*/5 * * * *'
 
 jobs:
   test:
