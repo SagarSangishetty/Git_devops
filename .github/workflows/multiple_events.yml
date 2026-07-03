@@ -1,4 +1,4 @@
-name: Test GitHub Action
+name: Test Multi Event GitHub Action
 
 on:
   push:

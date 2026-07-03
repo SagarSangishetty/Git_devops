@@ -1,0 +1,19 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch:
+    inputs :
+        environment :
+            description : 'Deploy to which environment?'
+            required : true
+            default : dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Print Message
+        run: echo "Workflow started manually."
