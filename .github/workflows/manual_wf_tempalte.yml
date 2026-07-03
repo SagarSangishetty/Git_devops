@@ -1,4 +1,4 @@
-name: Manual Workflow
+name: Manual Workflow Git Hub Action
 
 on:
   workflow_dispatch:

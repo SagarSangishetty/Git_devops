@@ -1,3 +1,4 @@
+name: Test Cron GitHub Action
 on :
   schedule:
     - cron: '30 21 * 8 5'
