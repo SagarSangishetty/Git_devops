@@ -1,4 +1,4 @@
 import sys
 
-print("Hello from Python!")
+print("albaz is gay!")
 print("Python Version:", sys.version)
