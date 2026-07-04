@@ -39,5 +39,6 @@ jobs :
                     context: ./python-app
                     file: ./python-app/Dockerfile
                     push: true
-                    tags:  ${{ secrets.DOCKER_USER }}/my-first-github-app:latest
+                    tags: |
+                           ${{ secrets.DOCKER_USER }}/my-first-github-app:latest
                            ${{ secrets.DOCKER_USER }}/my-first-github-app:master-${{ github.sha }}
