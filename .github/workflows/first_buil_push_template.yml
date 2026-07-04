@@ -36,7 +36,7 @@ jobs :
             - name: Build and Push Docker Image
               uses: docker/build-push-action@v5
               with:
-                    context: .
+                    context: ./python-app
                     file: ./python-app/Dockerfile
                     push: true
                     tags: ${{ secrets.DOCKER_USER }}/my-first-github-app:master-${{ github.sha }}
