@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: 169976490560.dkr.ecr.us-east-1.amazonaws.com/observability:01
+          image: 169976490560.dkr.ecr.us-east-1.amazonaws.com/my-first-github-app:master-1e65c98c61f99eee41e36c75769298a8e5e95a61
 
           ports:
             - containerPort: 8000
