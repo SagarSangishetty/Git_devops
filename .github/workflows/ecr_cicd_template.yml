@@ -82,10 +82,10 @@ jobs:
       - name: Replace image tag in manifest
         run: |
           sed -i "s|169976490560.dkr.ecr.us-east-1.amazonaws.com/observability:01|${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|g" \
-            k8s/deployment.yaml
+            config/deployment.yaml
 
       - name: Deploy to EKS
-        run: kubectl apply -f k8s/deployment.yaml
+        run: kubectl apply -f config/deployment.yaml
 
       - name: Verify Deployment
         run: |
