@@ -83,9 +83,6 @@ jobs:
         run: |
 <<<<<<< HEAD
           sed -i "s|${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:*|${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|g" \
-=======
-          sed -i "s|169976490560.dkr.ecr.us-east-1.amazonaws.com/observability:01|${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|g" \
->>>>>>> 1e65c98c61f99eee41e36c75769298a8e5e95a61
             python-app/config/deployment.yaml
 
       - name: Deploy to EKS
