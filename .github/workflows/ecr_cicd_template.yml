@@ -82,7 +82,7 @@ jobs:
       - name: Replace image tag in manifest
         run: |
           grep image python-app/config/deployment.yaml
-          sed -i "s|image:.*|${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|g" \
+          sed -i "s|image:.*|image: ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|g" \
             python-app/config/deployment.yaml
         
       - name: Verify deployment manifest
