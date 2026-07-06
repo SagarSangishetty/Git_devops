@@ -1,4 +1,4 @@
-name: Final CICD Pipeline (ECR (OIDC))
+name: Final CICD Pipeline (ECR | OIDC)
 
 on:
   push:
@@ -81,8 +81,8 @@ jobs:
 
       - name: Replace image tag in manifest
         run: |
-
-          sed -i "s|${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:*|${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|g" \
+          grep image python-app/config/deployment.yaml
+          sed -i "s|image:.*|${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|g" \
             python-app/config/deployment.yaml
 
       - name: Deploy to EKS
