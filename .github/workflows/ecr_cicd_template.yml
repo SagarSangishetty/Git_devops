@@ -87,7 +87,7 @@ jobs:
         
       - name: Verify deployment manifest
         run: |
-          cat -n python-app/config/deployment.yam
+          cat -n python-app/config/deployment.yaml
           
       - name: Deploy to EKS
         run: kubectl apply -f python-app/config/deployment.yaml
